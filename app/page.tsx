@@ -38,7 +38,7 @@ export default function HomePage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70 z-10" />
         <img
           src="/hero-exterior.webp"
@@ -77,7 +77,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-secondary py-20">
+      <section className="bg-secondary py-12">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
             <div className="text-center">
@@ -104,7 +104,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-6 text-balance">
-              Crafting Architectural Excellence Since 1993
+              Crafting Architectural Excellence Since 1985
             </h2>
             <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
               <p>
