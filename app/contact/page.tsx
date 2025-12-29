@@ -163,9 +163,9 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                      <a href="tel:+15551234567" className="text-muted-foreground hover:text-accent transition-colors">
-                        (555) 123-4567
-                      </a>
+                    <a href="mailto:sales@reardonbuilders.com" className="text-muted-foreground hover:text-accent transition-colors">
+					  Contact via Email
+					</a>
                     </div>
                   </div>
 
@@ -176,10 +176,10 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Email</h4>
                       <a
-                        href="mailto:info@reardonbuilders.com"
+                        href="mailto:sales@reardonbuilders.com"
                         className="text-muted-foreground hover:text-accent transition-colors"
                       >
-                        info@reardonbuilders.com
+                        sales@reardonbuilders.com
                       </a>
                     </div>
                   </div>
@@ -190,13 +190,9 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Office</h4>
-                      <p className="text-muted-foreground">
-                        123 Builder's Lane
-                        <br />
-                        Suite 400
-                        <br />
-                        Springfield, ST 12345
-                      </p>
+                    <p className="text-muted-foreground">
+					  Concord, NH 03301
+					</p>
                     </div>
                   </div>
 
