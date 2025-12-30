@@ -10,27 +10,48 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Mail, Phone, MapPin, Clock } from "lucide-react"
 import { useState } from "react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: "",
+    // Contact Info
+    fullName: "",
     email: "",
     phone: "",
+    preferredContact: "",
+    
+    // Project Basics
     projectType: "",
-    message: "",
+    projectTypeOther: "",
+    projectLocation: "",
+    
+    // Project Description
+    projectDescription: "",
+    
+    // Timeline
+    timeline: "",
+    
+    // Budget (optional)
+    budgetRange: "",
+    
+    // Referral (optional)
+    hearAboutUs: "",
+    referralName: "",
+    socialPlatform: "",
+    otherSource: "",
   })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Form submission logic will be added here
+    // Form submission logic will be added here (N8N webhook)
     console.log("Form submitted:", formData)
   }
-
+	
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header pageTitle="Contact" />
 
       {/* Hero Section */}
       <section className="relative py-32 bg-primary text-primary-foreground">
@@ -51,55 +72,94 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <Card className="p-8 md:p-12 bg-card">
-                <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-8">Start Your Project</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-2">
+                  Let's discuss your Project
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* 1. Contact Info */}
+                  <div className="space-y-6">
+                    <h3 className="font-semibold text-xl text-foreground border-b pb-2">
+                      1. Contact Info <span className="text-sm font-normal text-muted-foreground">(can't build without this)</span>
+                    </h3>
+                    
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-foreground font-medium">
+                      <Label htmlFor="fullName" className="text-foreground font-medium">
                         Full Name <span className="text-destructive">*</span>
                       </Label>
                       <Input
-                        id="name"
+                        id="fullName"
                         type="text"
                         placeholder="John Doe"
                         required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                         className="border-input focus:border-accent focus:ring-accent"
                       />
                     </div>
 
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-foreground font-medium">
+                          Email <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="border-input focus:border-accent focus:ring-accent"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-foreground font-medium">
+                          Phone Number <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder="(555) 123-4567"
+                          required
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className="border-input focus:border-accent focus:ring-accent"
+                        />
+                      </div>
+                    </div>
+
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-foreground font-medium">
-                        Email Address <span className="text-destructive">*</span>
+                      <Label className="text-foreground font-medium">
+                        Preferred Contact Method <span className="text-destructive">*</span>
                       </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="john@example.com"
+                      <RadioGroup 
+                        value={formData.preferredContact}
+                        onValueChange={(value) => setFormData({ ...formData, preferredContact: value })}
+                        className="flex gap-6"
                         required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="border-input focus:border-accent focus:ring-accent"
-                      />
+                      >
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="call" id="call" />
+                          <Label htmlFor="call" className="font-normal cursor-pointer">Call</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="text" id="text" />
+                          <Label htmlFor="text" className="font-normal cursor-pointer">Text</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="email" id="email-contact" />
+                          <Label htmlFor="email-contact" className="font-normal cursor-pointer">Email</Label>
+                        </div>
+                      </RadioGroup>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-foreground font-medium">
-                        Phone Number <span className="text-destructive">*</span>
-                      </Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder="(555) 123-4567"
-                        required
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="border-input focus:border-accent focus:ring-accent"
-                      />
-                    </div>
+                  {/* 2. Project Basics */}
+                  <div className="space-y-6">
+                    <h3 className="font-semibold text-xl text-foreground border-b pb-2">
+                      2. Project Basics <span className="text-sm font-normal text-muted-foreground">(the big picture)</span>
+                    </h3>
 
                     <div className="space-y-2">
                       <Label htmlFor="projectType" className="text-foreground font-medium">
@@ -107,46 +167,237 @@ export default function ContactPage() {
                       </Label>
                       <Select
                         value={formData.projectType}
-                        onValueChange={(value) => setFormData({ ...formData, projectType: value })}
+                        onValueChange={(value) => setFormData({ ...formData, projectType: value, projectTypeOther: "" })}
                         required
                       >
                         <SelectTrigger className="border-input focus:border-accent focus:ring-accent">
                           <SelectValue placeholder="Select project type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="residential-new">Residential - New Construction</SelectItem>
-                          <SelectItem value="residential-renovation">Residential - Renovation</SelectItem>
-                          <SelectItem value="commercial-new">Commercial - New Construction</SelectItem>
-                          <SelectItem value="commercial-renovation">Commercial - Renovation</SelectItem>
-                          <SelectItem value="industrial">Industrial</SelectItem>
-                          <SelectItem value="mixed-use">Mixed-Use Development</SelectItem>
+                          <SelectItem value="remodel-addition">Home Remodel/Addition</SelectItem>
+                          <SelectItem value="new-home">New Home Build</SelectItem>
+                          <SelectItem value="commercial">Commercial Construction</SelectItem>
                           <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Conditional: Other Project Type */}
+                    {formData.projectType === "other" && (
+                      <div className="space-y-2 animate-in fade-in duration-300">
+                        <Label htmlFor="projectTypeOther" className="text-foreground font-medium">
+                          Please specify project type <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="projectTypeOther"
+                          type="text"
+                          placeholder="Describe your project type"
+                          required
+                          value={formData.projectTypeOther}
+                          onChange={(e) => setFormData({ ...formData, projectTypeOther: e.target.value })}
+                          className="border-input focus:border-accent focus:ring-accent"
+                        />
+                      </div>
+                    )}
+
+                    <div className="space-y-2">
+                      <Label htmlFor="projectLocation" className="text-foreground font-medium">
+                        Project Location <span className="text-destructive">*</span>
+                      </Label>
+                      <Input
+                        id="projectLocation"
+                        type="text"
+                        placeholder="City, State (e.g., Concord, NH)"
+                        required
+                        value={formData.projectLocation}
+                        onChange={(e) => setFormData({ ...formData, projectLocation: e.target.value })}
+                        className="border-input focus:border-accent focus:ring-accent"
+                      />
+                    </div>
+                  </div>
+
+                  {/* 3. Project Description */}
+                  <div className="space-y-6">
+                    <h3 className="font-semibold text-xl text-foreground border-b pb-2">
+                      3. What Are You Looking To Do?
+                    </h3>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="projectDescription" className="text-foreground font-medium">
+                        Brief Project Description <span className="text-destructive">*</span>
+                      </Label>
+                      <Textarea
+                        id="projectDescription"
+                        placeholder="Tell us what you want to build or change, and why."
+                        rows={5}
+                        required
+                        value={formData.projectDescription}
+                        onChange={(e) => setFormData({ ...formData, projectDescription: e.target.value })}
+                        className="border-input focus:border-accent focus:ring-accent resize-none"
+                      />
+                      <p className="text-sm text-muted-foreground italic">
+                        Don't worry about being perfect — we'll help you refine the details.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* 4. Timeline */}
+                  <div className="space-y-6">
+                    <h3 className="font-semibold text-xl text-foreground border-b pb-2">
+                      4. Timeline <span className="text-sm font-normal text-muted-foreground">(expectations check)</span>
+                    </h3>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="timeline" className="text-foreground font-medium">
+                        When would you like to start? <span className="text-destructive">*</span>
+                      </Label>
+                      <Select
+                        value={formData.timeline}
+                        onValueChange={(value) => setFormData({ ...formData, timeline: value })}
+                        required
+                      >
+                        <SelectTrigger className="border-input focus:border-accent focus:ring-accent">
+                          <SelectValue placeholder="Select timeline" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="asap">ASAP</SelectItem>
+                          <SelectItem value="1-3-months">1–3 months</SelectItem>
+                          <SelectItem value="3-6-months">3–6 months</SelectItem>
+                          <SelectItem value="exploring">Just exploring/timeline still TBD</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-foreground font-medium">
-                      Project Details <span className="text-destructive">*</span>
-                    </Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell us about your project, timeline, budget, and any specific requirements..."
-                      rows={6}
-                      required
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="border-input focus:border-accent focus:ring-accent resize-none"
-                    />
+                  {/* 5. Budget Range */}
+                  <div className="space-y-6">
+                    <h3 className="font-semibold text-xl text-foreground border-b pb-2">
+                      5. Budget Range <span className="text-sm font-normal text-muted-foreground">(optional but highly recommended)</span>
+                    </h3>
+                    <p className="text-sm text-muted-foreground">You'll save everyone time.</p>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="budgetRange" className="text-foreground font-medium">
+                        Estimated Budget Range
+                      </Label>
+                      <Select
+                        value={formData.budgetRange}
+                        onValueChange={(value) => setFormData({ ...formData, budgetRange: value })}
+                      >
+                        <SelectTrigger className="border-input focus:border-accent focus:ring-accent">
+                          <SelectValue placeholder="Select budget range" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="under-25k">Under $25k</SelectItem>
+                          <SelectItem value="25k-75k">$25k–$75k</SelectItem>
+                          <SelectItem value="75k-150k">$75k–$150k</SelectItem>
+                          <SelectItem value="150k-plus">$150k+</SelectItem>
+                          <SelectItem value="not-sure">Not sure yet</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <p className="text-xs text-muted-foreground italic">
+                        Please note, this is a general range and non-committal
+                      </p>
+                    </div>
                   </div>
 
+                  {/* 6. How Did You Hear About Us */}
+                  <div className="space-y-6">
+                    <h3 className="font-semibold text-xl text-foreground border-b pb-2">
+                      6. How Did You Hear About Us? <span className="text-sm font-normal text-muted-foreground">(optional)</span>
+                    </h3>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="hearAboutUs" className="text-foreground font-medium">
+                        Source
+                      </Label>
+                      <Select
+                        value={formData.hearAboutUs}
+                        onValueChange={(value) => setFormData({ 
+                          ...formData, 
+                          hearAboutUs: value,
+                          referralName: "",
+                          socialPlatform: "",
+                          otherSource: ""
+                        })}
+                      >
+                        <SelectTrigger className="border-input focus:border-accent focus:ring-accent">
+                          <SelectValue placeholder="Select source" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="google">Google</SelectItem>
+                          <SelectItem value="referral">Referral</SelectItem>
+                          <SelectItem value="social-media">Social Media</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Conditional: Referral Name */}
+                    {formData.hearAboutUs === "referral" && (
+                      <div className="space-y-2 animate-in fade-in duration-300">
+                        <Label htmlFor="referralName" className="text-foreground font-medium">
+                          Who referred you?
+                        </Label>
+                        <Input
+                          id="referralName"
+                          type="text"
+                          placeholder="Name of person or company"
+                          value={formData.referralName}
+                          onChange={(e) => setFormData({ ...formData, referralName: e.target.value })}
+                          className="border-input focus:border-accent focus:ring-accent"
+                        />
+                      </div>
+                    )}
+
+                    {/* Conditional: Social Media Platform */}
+                    {formData.hearAboutUs === "social-media" && (
+                      <div className="space-y-2 animate-in fade-in duration-300">
+                        <Label htmlFor="socialPlatform" className="text-foreground font-medium">
+                          Which platform?
+                        </Label>
+                        <Select
+                          value={formData.socialPlatform}
+                          onValueChange={(value) => setFormData({ ...formData, socialPlatform: value })}
+                        >
+                          <SelectTrigger className="border-input focus:border-accent focus:ring-accent">
+                            <SelectValue placeholder="Select platform" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="facebook">Facebook</SelectItem>
+                            <SelectItem value="instagram">Instagram</SelectItem>
+                            <SelectItem value="linkedin">LinkedIn</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    )}
+
+                    {/* Conditional: Other Source */}
+                    {formData.hearAboutUs === "other" && (
+                      <div className="space-y-2 animate-in fade-in duration-300">
+                        <Label htmlFor="otherSource" className="text-foreground font-medium">
+                          Please tell us how you found us
+                        </Label>
+                        <Input
+                          id="otherSource"
+                          type="text"
+                          placeholder="How did you hear about us?"
+                          value={formData.otherSource}
+                          onChange={(e) => setFormData({ ...formData, otherSource: e.target.value })}
+                          className="border-input focus:border-accent focus:ring-accent"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Submit Button */}
                   <Button
                     type="submit"
                     size="lg"
                     className="w-full md:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-12 py-6 text-lg"
                   >
-                    Submit Request
+                    Request a Consultation
                   </Button>
                 </form>
               </Card>
@@ -215,7 +466,7 @@ export default function ContactPage() {
               </Card>
 
               <Card className="p-8 bg-primary text-primary-foreground">
-                <h3 className="font-serif text-2xl font-bold mb-4">Request a Consultation</h3>
+                <h3 className="font-serif text-2xl font-bold mb-4">Free Consultation</h3>
                 <p className="text-primary-foreground/90 leading-relaxed mb-6">
                   Schedule a free consultation with our team to discuss your project goals, timeline, and budget. We'll
                   provide expert guidance every step of the way.

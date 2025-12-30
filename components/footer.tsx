@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin } from "lucide-react"
+import { Facebook, Instagram } from "lucide-react"
 
 export function Footer() {
   return (
@@ -40,16 +40,23 @@ export function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Connect</h3>
             <div className="flex gap-4">
-              <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                <Instagram className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                <Linkedin className="h-6 w-6" />
-              </a>
-            </div>
+			  <a 
+				href="https://www.facebook.com/ReardonBuilders" 
+				target="_blank"
+				rel="noopener noreferrer"
+				className="text-primary-foreground/80 hover:text-accent transition-colors"
+			  >
+				<Facebook className="h-6 w-6" />
+			  </a>
+			  <a 
+				href="https://www.instagram.com/reardonbuilders/" 
+				target="_blank"
+				rel="noopener noreferrer"
+				className="text-primary-foreground/80 hover:text-accent transition-colors"
+			  >
+				<Instagram className="h-6 w-6" />
+			  </a>
+			</div>
           </div>
         </div>
 

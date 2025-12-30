@@ -76,7 +76,7 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+		<Header pageTitle="Our Portfolio" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary to-primary/80">
