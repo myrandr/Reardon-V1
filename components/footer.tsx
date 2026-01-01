@@ -16,13 +16,14 @@ export function Footer() {
       <div className="relative z-10 container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
-            <div className="text-2xl font-bold tracking-tight mb-4">
-              REARDON <span className="text-accent">BUILDERS</span>
-            </div>
-            <p className="text-primary-foreground/80 leading-relaxed max-w-md">
-              Transforming visions into architectural masterpieces. With decades of experience in large-scale
-              construction, we bring precision, innovation, and excellence to every project.
-            </p>
+			  <img 
+				src="/reardon_logo.png" 
+				alt="Reardon Builders" 
+				className="h-20 mb-4 brightness-0 invert"
+			  />
+			  <p className="text-primary-foreground/80 leading-relaxed max-w-md">
+			  Turning ideas into well-built spaces. With decades of experience in residential and commercial construction, we bring precision, accountability, and quality to every project.
+			</p>
           </div>
 
           <div>

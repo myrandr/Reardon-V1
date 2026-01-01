@@ -53,9 +53,12 @@ export default function HomePage() {
             <br />
             <span className="text-accent">One Project at a Time</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-3xl mx-auto text-balance leading-relaxed">
-            Premium construction and architectural services for large-scale commercial and residential developments
-          </p>
+          <p className="text-xl md:text-2xl mb-4 text-white/90 max-w-3xl mx-auto text-balance leading-relaxed">
+			  A trusted construction partner for residential and commercial projects at scale
+			</p>
+			<p className="text-lg md:text-l mb-12 text-white/80 max-w-3xl mx-auto text-balance">
+			  From thoughtful renovations to large, complex builds.
+			</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               asChild
@@ -106,16 +109,13 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-6 text-balance">
-              Crafting Architectural Excellence Since 1985
-            </h2>
+			  Building Excellence Since 1985
+			</h2>
             <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
-              <p>
-                Reardon Builders delivers professional construction services across residential and commercial sectors. 
-                From custom home builds and remodels to commercial renovations and tenant improvements, we bring quality 
-                craftsmanship to projects of any scale. Our commitment to precision, clear communication, and client 
-                satisfaction has built our reputation throughout the Greater Merrimack Valley.
-              </p>
-            </div>
+			  <p>
+				Reardon Builders provides trusted construction services for residential and commercial clients throughout the Greater Merrimack Valley. From custom home builds and thoughtful remodels to commercial renovations and tenant improvements, we deliver quality craftsmanship on projects of any scale. With a focus on precision, clear communication, and long-term client relationships, we've built a reputation for doing things right—<span className="whitespace-nowrap">since 1985.</span>
+			  </p>
+			</div>
           </div>
 
           {/* Feature Photos Grid */}
