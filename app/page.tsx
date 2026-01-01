@@ -66,7 +66,7 @@ export default function HomePage() {
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg"
             >
               <Link href="/contact">
-                Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
+                Request a Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button
@@ -221,7 +221,7 @@ export default function HomePage() {
             className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg"
           >
             <Link href="/contact">
-              Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
+              Request a Consultation <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
