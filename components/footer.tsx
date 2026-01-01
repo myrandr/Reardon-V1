@@ -3,8 +3,17 @@ import { Facebook, Instagram } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-6 py-16">
+    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+		  <div 
+			className="absolute inset-0 opacity-10"
+			style={{
+			  backgroundImage: 'url(/footer-blueprint.png)',
+			  backgroundSize: 'cover',
+			  backgroundPosition: 'center',
+			  backgroundRepeat: 'no-repeat'
+			}}
+		  />
+      <div className="relative z-10 container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
             <div className="text-2xl font-bold tracking-tight mb-4">
