@@ -79,17 +79,23 @@ export default function GalleryPage() {
 		<Header pageTitle="Our Portfolio" />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary to-primary/80">
-        <div className="container mx-auto px-6 text-center text-primary-foreground">
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
-            Our <span className="text-accent">Portfolio</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto text-balance leading-relaxed">
-            Explore our collection of exceptional construction projects that showcase our commitment to quality and
-            craftsmanship
-          </p>
-        </div>
-      </section>
+		<section className="relative pt-32 pb-20 bg-primary overflow-hidden">
+		  <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70 z-10" />
+		  <img
+			src="/hero-blueprint.png"
+			alt="Blueprint background"
+			className="absolute inset-0 w-full h-full object-cover"
+		  />
+		  <div className="relative z-20 container mx-auto px-6 text-center text-primary-foreground">
+			<h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+			  Our <span className="text-accent">Portfolio</span>
+			</h1>
+			<p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto text-balance leading-relaxed">
+			  Explore our collection of exceptional construction projects that showcase our commitment to quality and
+			  craftsmanship
+			</p>
+		  </div>
+		</section>
 
       {/* Gallery Grid */}
       <section className="py-20 bg-background">

@@ -54,8 +54,14 @@ export default function ContactPage() {
       <Header pageTitle="Contact" />
 
       {/* Hero Section */}
-      <section className="relative py-32 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-6 text-center">
+      <section className="relative py-32 bg-primary text-primary-foreground overflow-hidden">
+		  <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70 z-10" />
+		  <img
+			src="/hero-blueprint.png"
+			alt="Blueprint background"
+			className="absolute inset-0 w-full h-full object-cover"
+		  />
+		  <div className="relative z-20 container mx-auto px-6 text-center">
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
             Let's Build Something <span className="text-accent">Extraordinary</span>
           </h1>
