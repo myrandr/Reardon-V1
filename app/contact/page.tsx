@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Mail, Phone, MapPin, Clock } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, CheckCircle, XCircle } from "lucide-react"
 import { useState } from "react"
 
 export default function ContactPage() {
@@ -42,10 +42,62 @@ export default function ContactPage() {
     otherSource: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Form submission logic will be added here (N8N webhook)
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // Submit to N8N webhook
+      const response = await fetch('https://n8n.srv1013834.hstgr.cloud/webhook/reardon-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) throw new Error('Submission failed')
+
+      // Fire Google Analytics event
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'form_submission', {
+          form_type: 'contact',
+          project_type: formData.projectType,
+          timeline: formData.timeline,
+          source: formData.hearAboutUs || 'not_specified'
+        })
+      }
+
+      setSubmitStatus('success')
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        preferredContact: "",
+        projectType: "",
+        projectTypeOther: "",
+        city: "",
+        zipCode: "",
+        projectDescription: "",
+        timeline: "",
+        hearAboutUs: "",
+        referralName: "",
+        socialPlatform: "",
+        otherSource: "",
+      })
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 	
   return (
@@ -80,6 +132,33 @@ export default function ContactPage() {
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-2">
                   Tell Us About Your Project
                 </h2>
+
+                {/* Success Message */}
+                {submitStatus === 'success' && (
+                  <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold text-green-900">Thank you for contacting us!</h3>
+                      <p className="text-sm text-green-800 mt-1">
+                        We've received your inquiry and will get back to you within 24 hours.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+                    <XCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold text-red-900">Submission failed</h3>
+                      <p className="text-sm text-red-800 mt-1">
+                        Please try again or email us directly at sales@reardonbuilders.com
+                      </p>
+                    </div>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-8">
                   {/* 1. Contact Info */}
                   <div className="space-y-6">
@@ -416,9 +495,10 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full md:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-12 py-6 text-lg"
+                    disabled={isSubmitting}
+                    className="w-full md:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-12 py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Request a Consultation
+                    {isSubmitting ? 'Submitting...' : 'Request a Consultation'}
                   </Button>
                 </form>
               </Card>
