@@ -8,20 +8,20 @@ import { X } from "lucide-react"
 
 const galleryImages = [
   {
-    src: "/gallery-01.webp",
-    alt: "Custom mudroom with built-in storage",
-  },
-  {
-    src: "/gallery-02.webp",
-    alt: "Butler's pantry with custom cabinetry",
+    src: "/gallery-04.webp",
+    alt: "Custom home front elevation",
   },
   {
     src: "/gallery-03.webp",
     alt: "Custom home exterior",
   },
   {
-    src: "/gallery-04.webp",
-    alt: "Custom home front elevation",
+    src: "/gallery-01.webp",
+    alt: "Custom mudroom with built-in storage",
+  },
+  {
+    src: "/gallery-02.webp",
+    alt: "Butler's pantry with custom cabinetry",
   },
   {
     src: "/gallery-05.webp",
@@ -32,24 +32,24 @@ const galleryImages = [
     alt: "Kitchen detail with custom tile backsplash",
   },
   {
-    src: "/gallery-07.webp",
-    alt: "Dining room with custom millwork",
-  },
-  {
     src: "/gallery-08.webp",
     alt: "Kitchen with professional appliances",
+  },
+  {
+    src: "/gallery-07.webp",
+    alt: "Dining room with custom millwork",
   },
   {
     src: "/gallery-09.webp",
     alt: "Master bedroom suite",
   },
   {
-    src: "/gallery-10.webp",
-    alt: "Covered front porch",
-  },
-  {
     src: "/gallery-11.webp",
     alt: "Custom bathroom with dual vanity",
+  },
+  {
+    src: "/gallery-10.webp",
+    alt: "Covered front porch",
   },
 ]
 

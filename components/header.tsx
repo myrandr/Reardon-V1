@@ -34,9 +34,9 @@ export function Header({ pageTitle }: HeaderProps) {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <img 
-              src="/reardon_logo.png" 
+              src="/reardon-logo.png" 
               alt="Reardon Builders" 
-              className="h-16 brightness-0 invert"
+              className="h-22 brightness-0 invert"
             />
           </Link>
 
@@ -51,13 +51,13 @@ export function Header({ pageTitle }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium text-white hover:text-accent transition-colors">
+            <Link href="/" className="text-lg font-medium text-white hover:text-accent transition-colors">
               Home
             </Link>
-            <Link href="/gallery" className="text-sm font-medium text-white hover:text-accent transition-colors">
+            <Link href="/gallery" className="text-lg font-medium text-white hover:text-accent transition-colors">
               Gallery
             </Link>
-            <Link href="/contact" className="text-sm font-medium text-white hover:text-accent transition-colors">
+            <Link href="/contact" className="text-lg font-medium text-white hover:text-accent transition-colors">
               Contact
             </Link>
           </nav>
