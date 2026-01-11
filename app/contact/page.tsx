@@ -543,7 +543,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Office</h4>
                     <p className="text-muted-foreground">
-					  Concord, NH 03301
+					  PO Box 1124, Concord NH, 03302
 					</p>
                     </div>
                   </div>
