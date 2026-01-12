@@ -66,14 +66,26 @@ Contact form (`app/contact/page.tsx`) submits to N8N webhook:
 
 ## Critical Tasks (from REARDON-BACKLOG.md)
 
-- N8N webhook needs email address update
-- Testimonials page needs Google Sheets integration
-- iPad responsive design needs attention
-- SEO keywords need expansion (contractor, builder, renovation, etc.)
+1. Testimonials Google Sheets integration:
+  a. Connect submission form to Google Sheet for new testimonial entries
+  b. Build approval workflow in sheet
+  c. Populate testimonials display from approved sheet entries
+2. Responsive design: Fix display issues on mobile phones and iPads
+	a. Reduce Logo size - size set to H-22 for web
+	b. Reduce Hero Text on Home page
+	c. Increase hero imaage text padding on home page
+3. SEO keywords need expansion (contractor, builder, renovation, etc.)
 
 ## Business Context
 
 - Phone: 603-731-9096
-- Email: sales@reardonbuilders.com
+- Email: info@reardonbuilders.com
 - Location: PO Box 1124, Concord NH, 03302
 - Founded: 1985
+
+
+## Next Task
+
+
+
+
