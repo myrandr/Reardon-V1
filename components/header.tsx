@@ -54,12 +54,19 @@ export function Header({ pageTitle }: HeaderProps) {
             <Link href="/" className="text-lg font-medium text-white hover:text-accent transition-colors">
               Home
             </Link>
+			
             <Link href="/gallery" className="text-lg font-medium text-white hover:text-accent transition-colors">
               Gallery
             </Link>
+			
+			<Link href="/testimonials" className="text-lg font-medium text-white hover:text-accent transition-colors">
+			  Testimonials
+			</Link>
+			
             <Link href="/contact" className="text-lg font-medium text-white hover:text-accent transition-colors">
               Contact
             </Link>
+			
           </nav>
 
           {/* Mobile Navigation */}
@@ -83,6 +90,11 @@ export function Header({ pageTitle }: HeaderProps) {
                 >
                   Gallery
                 </Link>
+				
+				<Link href="/testimonials" className="text-lg font-medium text-white hover:text-accent transition-colors">
+				  Testimonials
+				</Link>
+				
                 <Link
                   href="/contact"
                   className="text-lg font-medium text-primary-foreground hover:text-accent transition-colors"
