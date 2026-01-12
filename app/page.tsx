@@ -48,7 +48,7 @@ export default function HomePage() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="relative z-20 container mx-auto px-6 text-center text-white">
-          <h1 className="hero-title font-serif text-2xl sm:text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-2 sm:mb-4 md:mb-6 text-balance leading-tight">
+          <h1 className="hero-title font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-2 sm:mb-4 md:mb-6 text-balance leading-tight">
             Building Excellence,
             <br />
             <span className="text-accent">One Project at a Time</span>
@@ -104,7 +104,7 @@ export default function HomePage() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-background">
+      <section className="py-12 md:py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-6 text-balance">

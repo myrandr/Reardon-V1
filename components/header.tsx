@@ -36,7 +36,7 @@ export function Header({ pageTitle }: HeaderProps) {
             <img 
               src="/reardon-logo.png" 
               alt="Reardon Builders" 
-              className="h-12 sm:h-14 md:h-18 lg:h-22 brightness-0 invert"
+              className="h-14 sm:h-16 md:h-18 lg:h-22 brightness-0 invert"
             />
           </Link>
 
