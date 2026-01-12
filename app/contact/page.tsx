@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Mail, Phone, MapPin, Clock, CheckCircle, XCircle } from "lucide-react"
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -44,6 +44,7 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const formCardRef = useRef<HTMLDivElement>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -73,7 +74,10 @@ export default function ContactPage() {
       }
 
       setSubmitStatus('success')
-      
+
+      // Scroll to top of form card to show success message
+      formCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
       // Reset form
       setFormData({
         firstName: "",
@@ -128,7 +132,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="p-8 md:p-12 bg-card">
+              <Card ref={formCardRef} className="p-8 md:p-12 bg-card">
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-2">
                   Tell Us About Your Project
                 </h2>
@@ -153,7 +157,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-red-900">Submission failed</h3>
                       <p className="text-sm text-red-800 mt-1">
-                        Please try again or email us directly at sales@reardonbuilders.com
+                        Please try again or email us directly at info@reardonbuilders.com
                       </p>
                     </div>
                   </div>
@@ -515,7 +519,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                    <a href="mailto:sales@reardonbuilders.com" className="text-muted-foreground hover:text-accent transition-colors">
+                    <a href="mailto:info@reardonbuilders.com" className="text-muted-foreground hover:text-accent transition-colors">
 					  Contact via Email
 					</a>
                     </div>
@@ -528,10 +532,10 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Email</h4>
                       <a
-                        href="mailto:sales@reardonbuilders.com"
+                        href="mailto:info@reardonbuilders.com"
                         className="text-muted-foreground hover:text-accent transition-colors"
                       >
-                        sales@reardonbuilders.com
+                        info@reardonbuilders.com
                       </a>
                     </div>
                   </div>
