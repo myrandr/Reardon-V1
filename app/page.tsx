@@ -40,7 +40,7 @@ export default function HomePage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[75vh] flex items-center justify-center overflow-hidden pt-24 md:pt-0">
+      <section className="hero-section relative h-[55vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] flex items-center justify-center overflow-hidden pt-16 sm:pt-20 lg:pt-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70 z-10" />
         <img
           src="/hero-exterior.webp"
@@ -48,22 +48,22 @@ export default function HomePage() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="relative z-20 container mx-auto px-6 text-center text-white">
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-bold mb-4 md:mb-6 text-balance leading-tight">
+          <h1 className="hero-title font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-2 sm:mb-4 md:mb-6 text-balance leading-tight">
             Building Excellence,
             <br />
             <span className="text-accent">One Project at a Time</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl mb-3 md:mb-4 text-white/90 max-w-3xl mx-auto text-balance leading-relaxed">
+          <p className="hero-subtitle text-sm sm:text-base md:text-xl lg:text-2xl mb-1 sm:mb-2 md:mb-4 text-white/90 max-w-3xl mx-auto text-balance leading-relaxed">
 			  A trusted construction partner for residential and commercial projects at scale
 			</p>
-			<p className="text-sm sm:text-base md:text-lg mb-8 md:mb-12 text-white/80 max-w-3xl mx-auto text-balance">
+			<p className="hero-tagline text-xs sm:text-sm md:text-base lg:text-lg mb-4 sm:mb-6 md:mb-12 text-white/80 max-w-3xl mx-auto text-balance">
 			  From thoughtful renovations to large, complex builds.
 			</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="hero-buttons flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">
             <Button
               asChild
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-4 py-3 sm:px-6 sm:py-5 md:px-8 md:py-6 text-sm sm:text-base md:text-lg"
             >
               <Link href="/contact">
                 Request a Free Consultation <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
@@ -73,7 +73,7 @@ export default function HomePage() {
               asChild
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-6 py-5 md:px-8 md:py-6 text-base md:text-lg bg-transparent"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-4 py-3 sm:px-6 sm:py-5 md:px-8 md:py-6 text-sm sm:text-base md:text-lg bg-transparent"
             >
               <Link href="/gallery">View Our Work</Link>
             </Button>
@@ -82,30 +82,29 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-secondary py-12">
+      <section className="bg-secondary py-6 md:py-12">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-12 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                <Building2 className="h-8 w-8 text-primary" />
+              <div className="inline-flex items-center justify-center w-10 h-10 md:w-16 md:h-16 rounded-full bg-primary/10 mb-2 md:mb-4">
+                <Building2 className="h-5 w-5 md:h-8 md:w-8 text-primary" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground font-medium">Projects Completed</div>
+              <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-1 md:mb-2">500+</div>
+              <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-4">
-                <Users className="h-8 w-8 text-accent" />
+              <div className="inline-flex items-center justify-center w-10 h-10 md:w-16 md:h-16 rounded-full bg-accent/10 mb-2 md:mb-4">
+                <Users className="h-5 w-5 md:h-8 md:w-8 text-accent" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">40+</div>
-              <div className="text-muted-foreground font-medium">Years Experience</div>
+              <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-1 md:mb-2">40+</div>
+              <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium">Years Experience</div>
             </div>
-           
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-background">
+      <section className="py-12 md:py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-6 text-balance">
@@ -122,7 +121,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featureProjects.map((project) => (
               <Card key={project.id} className="overflow-hidden group cursor-pointer">
-                <div className="relative aspect-[4/5] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <div
                     className={`absolute inset-0 bg-gradient-to-t ${project.overlayColor} to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                   />
