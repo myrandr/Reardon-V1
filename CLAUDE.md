@@ -82,10 +82,7 @@ Contact form (`app/contact/page.tsx`) submits to N8N webhook:
 - Email: info@reardonbuilders.com
 - Location: PO Box 1124, Concord NH, 03302
 - Founded: 1985
-
-
-## Next Task
-
+  
 
 
 
