@@ -40,7 +40,7 @@ export default function HomePage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[75vh] flex items-center justify-center overflow-hidden pt-24 md:pt-0">
+      <section className="hero-section relative h-[75vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24 lg:pt-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70 z-10" />
         <img
           src="/hero-exterior.webp"
@@ -48,18 +48,18 @@ export default function HomePage() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="relative z-20 container mx-auto px-6 text-center text-white">
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-bold mb-4 md:mb-6 text-balance leading-tight">
+          <h1 className="hero-title font-serif text-2xl sm:text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 text-balance leading-tight">
             Building Excellence,
             <br />
             <span className="text-accent">One Project at a Time</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl mb-3 md:mb-4 text-white/90 max-w-3xl mx-auto text-balance leading-relaxed">
+          <p className="hero-subtitle text-base sm:text-lg md:text-2xl mb-3 md:mb-4 text-white/90 max-w-3xl mx-auto text-balance leading-relaxed">
 			  A trusted construction partner for residential and commercial projects at scale
 			</p>
-			<p className="text-sm sm:text-base md:text-lg mb-8 md:mb-12 text-white/80 max-w-3xl mx-auto text-balance">
+			<p className="hero-tagline text-sm sm:text-base md:text-lg mb-8 md:mb-12 text-white/80 max-w-3xl mx-auto text-balance">
 			  From thoughtful renovations to large, complex builds.
 			</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               asChild
               size="lg"
