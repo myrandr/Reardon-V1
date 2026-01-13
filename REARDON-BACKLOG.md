@@ -8,7 +8,7 @@
 
 
 ## CRITICAL (Ongoing)
- Update site copy from "Greater Merrimack Valley area" to "Merrimack County, New Hampshire" or "Merrimack County and surrounding areas"
+ [x] ~~Update site copy from "Greater Merrimack Valley area" to "Merrimack County, New Hampshire"~~ - DONE Jan 2026
  
 
 ## Backlog (Ongoing)
