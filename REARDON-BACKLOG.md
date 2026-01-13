@@ -5,11 +5,7 @@
 ## NEXT SESSION PRIORITIES
 
 1. **N8N Email Update** - Update contact form webhook to send to info@reardonbuilders.com
-2. **Testimonials Google Sheets Integration**
-   - Connect testimonial submission form to Google Sheet via N8N
-   - Implement approval workflow (Show/No Show flag in sheet)
-   - Update testimonials page to populate from approved sheet entries
-3. **Responsive Design Fixes** - Test and fix display issues on mobile phones and iPads
+
 
 ## CRITICAL (Ongoing)
 
@@ -22,12 +18,14 @@
 - [ ] Photo repository - Google Drive / OneDrive style
 - [ ] Pictures, pictures, pictures
 - [ ] Potentially missing business from out of towners looking to do local work.
-- [ ] Testimonial form for adding to website - add a header level navigation for it
-	- [ ] Need ability to do a review prior to posting
 - [ ] Photo Section - for renderings
 - [ ] Email Signature w/logo - for Jack to use in email signiture
 - [] Social Media Feeds** - Not yet connected
    - [] Requires API setup after getting real account info
+- [] Add recovery email to Gmail account
+- [] How to add new photo to Gallery / how to move photos in gallery?  Should we be tagging photo for use when we start getting enough photos to do a search by type:  Kitchen, bathroom, living room, etc?
+
+
    
 ## Client QUESTIONS (Ongoing)
 
@@ -43,7 +41,7 @@
 
 ---
 
-## COMPLETED TODAY ✅
+## COMPLETED ✅
 
 - [x] Set up GitHub repository (Reardon-V1)
 - [x] Local development environment running
@@ -62,6 +60,13 @@
 - [x] ~~Configure webhook URL~~ - DONE (https://n8n.srv1013834.hstgr.cloud/webhook/reardon-contact)
 - [x] N8N webhook: Update contact form submission email to: info@reardonbuilders.com
 - [x] Change Page Contact - Contact Information - Email to: info@reardonbuilders.com
+- [x] Testimonial form for adding to website - add a header level navigation for it
+	- [x] Need ability to do a review prior to posting
+- [x] **Responsive Design Fixes** - Test and fix display issues on mobile phones and iPads
+- [x] **Testimonials Google Sheets Integration**
+   - [x] Connect testimonial submission form to Google Sheet via N8N
+   - [x] Implement approval workflow (Pending/Approved/Ignore)
+   - [x] Update testimonials page to populate from approved sheet entries
 ---
 
 ## IN PROGRESS / BLOCKED 🚧
