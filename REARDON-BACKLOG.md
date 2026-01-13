@@ -8,12 +8,13 @@
 
 
 ## CRITICAL (Ongoing)
-
+ Update site copy from "Greater Merrimack Valley area" to "Merrimack County, New Hampshire" or "Merrimack County and surrounding areas"
+ 
 
 ## Backlog (Ongoing)
 
-- [] text/sms notifcation of submissions.
-- [] text/sms submissions to social Media
+- [] text/sms notifcation of submissions - Need to verify Twilio Toll Free Number
+- [] text/sms submissions to social Media - Need to verify Twilio Toll Free Number
 - [ ] Think about pre-sales calls information that will be helpful to gather, we can create a form landing page for you to direct people to.
 - [ ] Photo repository - Google Drive / OneDrive style
 - [ ] Pictures, pictures, pictures
@@ -29,6 +30,12 @@
    
 ## Client QUESTIONS (Ongoing)
 
+Tomorrow's Action Items (clean list for morning-brain):
+
+- [] Text client: Ask for EIN + admin access to Instagram/Facebook
+- [] Complete Twilio verification: Submit form with EIN
+- [] Get added as admin: Instagram Business + Facebook Page
+- [] Ping me (claude): We'll pick up right where we left off
 
 ### Content & Photos
 
