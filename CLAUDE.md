@@ -70,7 +70,8 @@ Contact form (`app/contact/page.tsx`) submits to N8N webhook:
   a. Connect submission form to Google Sheet for new testimonial entries
   b. Build approval workflow in sheet
   c. Populate testimonials display from approved sheet entries
-3. SEO keywords need expansion (contractor, builder, renovation, etc.)
+3. SEO keywords need expansion, keywords that should be incorporated for SEO are: contractor, general contractor, home builder, construction, home builder, builder, renovation, remodeling, home remodeling, kitched remodeling, bathroom remodeling, home additions, home renovation, commercial builder, commercial contractor, commercial remodeling, business remodeling, business construction
+
 
 ## Business Context
 
@@ -78,7 +79,48 @@ Contact form (`app/contact/page.tsx`) submits to N8N webhook:
 - Email: info@reardonbuilders.com
 - Location: PO Box 1124, Concord NH, 03302
 - Founded: 1985
-  
 
+## SEO Implementation (January 2026)
 
+### Metadata Structure
+- **Root layout** (`app/layout.tsx`): Default metadata with title template `"%s | Reardon Builders"`
+- **Page-specific metadata**: Each page exports its own `Metadata` object that overrides defaults
+- Client components refactored to `*-content.tsx` files, allowing `page.tsx` to be server components that export metadata
+
+### JSON-LD Structured Data
+`GeneralContractor` schema in root layout includes:
+- Business info (name, phone, email, address, founding date)
+- Geo coordinates for Concord, NH
+- All 15 service areas (Concord, Hooksett, Franklin, Bow, Pembroke, Henniker, Hopkinton, Loudon, Northfield, Epsom, Allenstown, New London, Boscawen, Pittsfield, Dunbarton)
+- Service types (Custom Home Building, Renovations, Kitchen/Bathroom Remodeling, Commercial)
+- Business hours and social media links
+
+### Page Titles (optimized 55-60 chars)
+| Page | Title |
+|------|-------|
+| Home | Reardon Builders \| General Contractor Concord NH \| Since 1985 |
+| Contact | Contact Us \| Free Construction Estimates |
+| Gallery | Project Gallery \| Custom Homes & Renovations |
+| Testimonials | Client Testimonials \| Reviews & Feedback |
+
+### Open Graph / Social
+All pages include OG tags with:
+- Title, description, canonical URL
+- Image: `/hero-exterior.webp` (1200x630)
+- Twitter card: `summary_large_image`
+
+### File Structure Change
+```
+app/
+├── page.tsx              # Server component with metadata, renders HomeContent
+├── home-content.tsx      # Client component with page UI
+├── contact/
+│   ├── page.tsx          # Server component with metadata
+│   └── contact-content.tsx
+├── gallery/
+│   ├── page.tsx          # Server component with metadata
+│   └── gallery-content.tsx
+└── testimonials/
+    └── page.tsx          # Server component (already was), metadata added
+```
 
