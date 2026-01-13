@@ -1,6 +1,30 @@
+import type { Metadata } from "next"
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { TestimonialsGrid, Testimonial } from './components';
+
+export const metadata: Metadata = {
+  title: "Client Testimonials | Reviews & Feedback",
+  description:
+    "Read reviews from satisfied Reardon Builders clients in Concord, NH and Merrimack County. See why homeowners and businesses trust us for custom homes, renovations, and commercial construction.",
+  alternates: {
+    canonical: "/testimonials",
+  },
+  openGraph: {
+    title: "Client Testimonials | Reardon Builders",
+    description:
+      "See what our clients say about Reardon Builders. Trusted construction services in Merrimack County, NH since 1985.",
+    url: "https://reardonbuilders.com/testimonials",
+    images: [
+      {
+        url: "/hero-exterior.webp",
+        width: 1200,
+        height: 630,
+        alt: "Reardon Builders client testimonials",
+      },
+    ],
+  },
+};
 
 const SPREADSHEET_ID = '1xn8P11_od5PXrwI-QIOtW2hHx0jYHamHmgNlwXAAv6o';
 const SHEET_NAME = 'Sheet1';
