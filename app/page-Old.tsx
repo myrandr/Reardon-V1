@@ -113,7 +113,7 @@ export default function HomePage() {
 			</h2>
             <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
 			  <p>
-				Reardon Builders provides trusted construction services for residential and commercial clients throughout the Greater Merrimack Valley. From custom home builds and thoughtful remodels to commercial renovations and tenant improvements, we deliver quality craftsmanship on projects of any scale. With a focus on precision, clear communication, and long-term client relationships, we've built a reputation for doing things right—<span className="whitespace-nowrap">since 1985.</span>
+				Reardon Builders provides trusted construction services for residential and commercial clients throughout Merrimack County, NH. From custom home builds and thoughtful remodels to commercial renovations and tenant improvements, we deliver quality craftsmanship on projects of any scale. With a focus on precision, clear communication, and long-term client relationships, we've built a reputation for doing things right—<span className="whitespace-nowrap">since 1985.</span>
 			  </p>
 			</div>
           </div>

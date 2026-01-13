@@ -590,7 +590,7 @@ export function ContactContent() {
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-6">Areas We Serve</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-              Proudly serving the Greater Merrimack Valley with exceptional construction services
+              Proudly serving Merrimack County, NH with exceptional construction services
             </p>
           </div>
 
@@ -599,9 +599,9 @@ export function ContactContent() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6">
                 <MapPin className="h-8 w-8 text-accent" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-primary mb-4">Greater Merrimack Valley</h3>
+              <h3 className="font-serif text-2xl font-bold text-primary mb-4">Merrimack County, NH</h3>
               <p className="text-muted-foreground text-lg">
-                Serving Concord, Manchester, Nashua, and surrounding communities throughout the Merrimack Valley region.
+                Serving Concord and surrounding communities throughout Merrimack County and beyond.
               </p>
             </Card>
           </div>
