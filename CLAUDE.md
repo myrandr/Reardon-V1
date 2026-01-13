@@ -70,10 +70,6 @@ Contact form (`app/contact/page.tsx`) submits to N8N webhook:
   a. Connect submission form to Google Sheet for new testimonial entries
   b. Build approval workflow in sheet
   c. Populate testimonials display from approved sheet entries
-2. Responsive design: Fix display issues on mobile phones and iPads
-	a. Reduce Logo size - size set to H-22 for web
-	b. Reduce Hero Text on Home page
-	c. Increase hero imaage text padding on home page
 3. SEO keywords need expansion (contractor, builder, renovation, etc.)
 
 ## Business Context
