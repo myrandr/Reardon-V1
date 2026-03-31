@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { getGalleryData } from "@/lib/gallery"
 import { HomeContent } from "./home-content"
 
 export const metadata: Metadata = {
@@ -24,6 +25,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function HomePage() {
-  return <HomeContent />
+export default async function HomePage() {
+  const { featured } = await getGalleryData()
+
+  return <HomeContent featured={featured} />
 }

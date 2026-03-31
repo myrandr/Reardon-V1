@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { getGalleryData } from "@/lib/gallery"
 import { GalleryContent } from "./gallery-content"
 
 export const metadata: Metadata = {
@@ -24,6 +25,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function GalleryPage() {
-  return <GalleryContent />
+export default async function GalleryPage() {
+  const { allPhotos, projects } = await getGalleryData()
+
+  return <GalleryContent allPhotos={allPhotos} projects={projects} />
 }
