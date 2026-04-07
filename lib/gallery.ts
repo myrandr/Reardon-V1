@@ -91,6 +91,7 @@ export async function getGalleryData(): Promise<GalleryData> {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/ReardonGallery!A:J?key=${apiKey}`;
 
     const response = await fetch(url, {
+      headers: { 'Referer': 'https://reardonbuilders.com' },
       next: { revalidate: 3600 },
     });
 
