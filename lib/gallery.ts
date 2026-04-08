@@ -72,6 +72,17 @@ function parseFeatured(value: string): FeaturedType | null {
   return null;
 }
 
+function toDriveImageUrl(url: string): string {
+  if (!url) return '';
+  // Extract file ID from Drive share URLs and convert to direct embed URL
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (match) {
+    return `https://lh3.googleusercontent.com/d/${match[1]}`;
+  }
+  // Already a direct URL or unknown format — use as-is
+  return url;
+}
+
 export async function getGalleryData(): Promise<GalleryData> {
   const empty: GalleryData = {
     allPhotos: [],
@@ -120,7 +131,7 @@ export async function getGalleryData(): Promise<GalleryData> {
 
       photos.push({
         filename: row[0] || '',
-        drive_url: row[1] || '',
+        drive_url: toDriveImageUrl(row[1] || ''),
         category: parseCategory(row[2]),
         project_id: row[3] || '',
         project_name: row[4] || '',
