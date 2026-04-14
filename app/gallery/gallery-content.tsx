@@ -38,6 +38,7 @@ const ALL_CATEGORIES: Category[] = [
 export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("projects")
   const [categoryFilter, setCategoryFilter] = useState<FilterCategory>("all")
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxPhotos, setLightboxPhotos] = useState<Photo[]>([])
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
@@ -161,7 +162,56 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
         <div className="container mx-auto px-6">
           {viewMode === "projects" ? (
             /* Projects View */
-            projects.length > 0 ? (
+            selectedProject ? (
+              /* Project Detail View */
+              <div>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="mb-6 flex items-center gap-2 text-gray-700 hover:text-[#ae7400] font-medium transition-colors"
+                >
+                  ← Back to Projects
+                </button>
+                <h2 className="font-serif text-3xl font-bold text-gray-900 mb-8">
+                  {selectedProject.photos[0]?.project_name_common || selectedProject.project_name}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {selectedProject.photos.map((photo, index) => (
+                    <Card
+                      key={`${photo.project_id}-${photo.sequence}`}
+                      className="overflow-hidden group cursor-pointer bg-white"
+                      onClick={() => openLightbox(selectedProject.photos, index)}
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <img
+                          src={photo.drive_url}
+                          alt={photo.alt_text || photo.filename}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="w-12 h-12 rounded-full bg-[#ae7400] flex items-center justify-center">
+                            <svg
+                              className="w-6 h-6 text-white"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            ) : projects.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((project) => {
                   const heroPhoto = project.photos[0]
@@ -171,7 +221,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
                     <Card
                       key={project.project_id}
                       className="overflow-hidden group cursor-pointer bg-white"
-                      onClick={() => openLightbox(project.photos, 0)}
+                      onClick={() => setSelectedProject(project)}
                     >
                       <div className="relative aspect-[4/3] overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
