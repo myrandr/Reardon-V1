@@ -206,7 +206,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
                       </div>
                       <div className="p-4">
                         <h3 className="font-serif text-lg font-semibold text-gray-900">
-                          {project.project_name}
+                          {project.photos[0].project_name_common || project.project_name}
                         </h3>
                       </div>
                     </Card>
@@ -346,6 +346,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
             />
             <p className="text-center text-white mt-4 text-lg">
               {lightboxPhotos[currentPhotoIndex].alt_text ||
+                lightboxPhotos[currentPhotoIndex].project_name_common ||
                 lightboxPhotos[currentPhotoIndex].project_name}{" "}
               ({currentPhotoIndex + 1} / {lightboxPhotos.length})
             </p>
