@@ -16,23 +16,23 @@ type ViewMode = "projects" | "all"
 type FilterCategory = Category | "all"
 
 const CATEGORY_LABELS: Record<Category, string> = {
-  kitchen: "Kitchen",
+  addition: "Addition",
+  basement: "Basement",
   bathroom: "Bathroom",
-  exterior: "Exterior",
-  bedroom: "Bedroom",
-  living_room: "Living Room",
-  construction: "Construction",
   commercial: "Commercial",
+  kitchen: "Kitchen",
+  new_build: "New Build",
+  renovation: "Renovation",
 }
 
 const ALL_CATEGORIES: Category[] = [
-  "kitchen",
+  "addition",
+  "basement",
   "bathroom",
-  "exterior",
-  "bedroom",
-  "living_room",
-  "construction",
   "commercial",
+  "kitchen",
+  "new_build",
+  "renovation",
 ]
 
 export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
@@ -383,7 +383,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
           )}
 
           <div
-            className="max-w-7xl max-h-[90vh] mx-auto px-20"
+            className="flex flex-col items-center max-w-7xl w-full mx-auto px-20"
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -392,7 +392,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
                 lightboxPhotos[currentPhotoIndex].alt_text ||
                 lightboxPhotos[currentPhotoIndex].filename
               }
-              className="w-full h-full object-contain"
+              className="max-h-[80vh] max-w-full w-auto h-auto object-contain"
             />
             <p className="text-center text-white mt-4 text-lg">
               {lightboxPhotos[currentPhotoIndex].alt_text ||
