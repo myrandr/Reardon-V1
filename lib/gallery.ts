@@ -74,12 +74,19 @@ function parseFeatured(value: string): FeaturedType | null {
 
 function toDriveImageUrl(url: string): string {
   if (!url) return '';
-  // Extract file ID from Drive share URLs and convert to direct embed URL
-  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-  if (match) {
-    return `https://lh3.googleusercontent.com/d/${match[1]}`;
+
+  // Handle uc?export=view&id=FILE_ID format
+  const ucMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (ucMatch) {
+    return `https://lh3.googleusercontent.com/d/${ucMatch[1]}`;
   }
-  // Already a direct URL or unknown format — use as-is
+
+  // Handle /d/FILE_ID format
+  const dMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (dMatch) {
+    return `https://lh3.googleusercontent.com/d/${dMatch[1]}`;
+  }
+
   return url;
 }
 
