@@ -16,23 +16,27 @@ type ViewMode = "projects" | "all"
 type FilterCategory = Category | "all"
 
 const CATEGORY_LABELS: Record<Category, string> = {
-  addition: "Addition",
-  basement: "Basement",
-  bathroom: "Bathroom",
-  commercial: "Commercial",
+  exterior: "Exterior",
+  interior: "Interior",
   kitchen: "Kitchen",
-  new_build: "New Build",
-  renovation: "Renovation",
+  bathroom: "Bathroom",
+  basement: "Basement",
+  garage: "Garage",
+  commercial: "Commercial",
+  construction: "Construction",
+  outdoor: "Outdoor",
 }
 
 const ALL_CATEGORIES: Category[] = [
-  "addition",
-  "basement",
-  "bathroom",
-  "commercial",
+  "exterior",
+  "interior",
   "kitchen",
-  "new_build",
-  "renovation",
+  "bathroom",
+  "basement",
+  "garage",
+  "commercial",
+  "construction",
+  "outdoor",
 ]
 
 export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
@@ -42,6 +46,8 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxPhotos, setLightboxPhotos] = useState<Photo[]>([])
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
+
+  console.log(allPhotos.map(p => p.category))
 
   const filteredPhotos =
     categoryFilter === "all"
@@ -131,7 +137,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
             <div className="flex justify-center">
               <select
                 value={categoryFilter}
-                onChange={(e) => setCategoryFilter(e.target.value as FilterCategory)}
+                onChange={(e) => { const value = e.target.value as FilterCategory; console.log('filter changed to:', value); setCategoryFilter(value); }}
                 className="appearance-none pl-4 pr-8 py-2 rounded-full text-sm font-medium border border-[#ae7400] bg-white text-[#1a2744] focus:outline-none focus:ring-2 focus:ring-[#ae7400] cursor-pointer bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%23ae7400%22 stroke-width=%221.5%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>')] bg-no-repeat bg-[right_0.75rem_center]"
               >
                 <option value="all">All Categories</option>
@@ -166,7 +172,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   {selectedProject.photos.map((photo, index) => (
                     <Card
-                      key={`${photo.project_id}-${photo.sequence}`}
+                      key={photo.filename}
                       className="overflow-hidden group cursor-pointer bg-white"
                       onClick={() => openLightbox(selectedProject.photos, index)}
                     >
@@ -262,7 +268,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {filteredPhotos.map((photo, index) => (
                 <Card
-                  key={`${photo.project_id}-${photo.sequence}`}
+                  key={photo.filename}
                   className="overflow-hidden group cursor-pointer bg-white"
                   onClick={() => openLightbox(filteredPhotos, index)}
                 >

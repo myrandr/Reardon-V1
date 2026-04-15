@@ -1,11 +1,13 @@
 export type Category =
-  | 'addition'
-  | 'basement'
-  | 'bathroom'
-  | 'commercial'
+  | 'exterior'
+  | 'interior'
   | 'kitchen'
-  | 'new_build'
-  | 'renovation';
+  | 'bathroom'
+  | 'basement'
+  | 'garage'
+  | 'commercial'
+  | 'construction'
+  | 'outdoor';
 
 export type FeaturedType = 'residential' | 'commercial' | 'renovation';
 
@@ -46,13 +48,15 @@ interface SheetsResponse {
 }
 
 const VALID_CATEGORIES: Category[] = [
-  'addition',
-  'basement',
-  'bathroom',
-  'commercial',
+  'exterior',
+  'interior',
   'kitchen',
-  'new_build',
-  'renovation',
+  'bathroom',
+  'basement',
+  'garage',
+  'commercial',
+  'construction',
+  'outdoor',
 ];
 
 const VALID_FEATURED: FeaturedType[] = ['residential', 'commercial', 'renovation'];
@@ -62,7 +66,7 @@ function parseCategory(value: string): Category {
   if (VALID_CATEGORIES.includes(normalized as Category)) {
     return normalized as Category;
   }
-  return 'renovation';
+  return 'construction';
 }
 
 function parseFeatured(value: string): FeaturedType | null {
