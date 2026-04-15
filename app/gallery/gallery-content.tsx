@@ -132,7 +132,7 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value as FilterCategory)}
-                className="px-4 py-2 rounded-full text-sm font-medium border border-[#ae7400] bg-white text-[#1a2744] focus:outline-none focus:ring-2 focus:ring-[#ae7400] cursor-pointer"
+                className="appearance-none pl-4 pr-8 py-2 rounded-full text-sm font-medium border border-[#ae7400] bg-white text-[#1a2744] focus:outline-none focus:ring-2 focus:ring-[#ae7400] cursor-pointer bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%23ae7400%22 stroke-width=%221.5%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>')] bg-no-repeat bg-[right_0.75rem_center]"
               >
                 <option value="all">All Categories</option>
                 {activeCategories.map((category) => (
