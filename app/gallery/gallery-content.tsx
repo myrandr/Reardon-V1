@@ -124,34 +124,23 @@ export function GalleryContent({ allPhotos, projects }: GalleryContentProps) {
         </div>
       </section>
 
-      {/* Category Filters (All Photos view only) */}
+      {/* Category Filter (All Photos view only) */}
       {viewMode === "all" && (
         <section className="py-6 bg-[#f7f4f2]">
           <div className="container mx-auto px-6">
-            <div className="flex flex-wrap justify-center gap-2">
-              <button
-                onClick={() => setCategoryFilter("all")}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  categoryFilter === "all"
-                    ? "bg-[#ae7400] text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+            <div className="flex justify-center">
+              <select
+                value={categoryFilter}
+                onChange={(e) => setCategoryFilter(e.target.value as FilterCategory)}
+                className="px-4 py-2 rounded-full text-sm font-medium border border-[#ae7400] bg-white text-[#1a2744] focus:outline-none focus:ring-2 focus:ring-[#ae7400] cursor-pointer"
               >
-                All
-              </button>
-              {activeCategories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setCategoryFilter(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    categoryFilter === category
-                      ? "bg-[#ae7400] text-white"
-                      : "bg-white text-gray-700 hover:bg-gray-100"
-                  }`}
-                >
-                  {CATEGORY_LABELS[category]}
-                </button>
-              ))}
+                <option value="all">All Categories</option>
+                {activeCategories.map((category) => (
+                  <option key={category} value={category}>
+                    {CATEGORY_LABELS[category]}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </section>
