@@ -15,6 +15,12 @@ const PROJECT_TYPE_CODE: Record<NonNullable<InitialFilter>, string> = {
   renovation: "REN",
 }
 
+const ACTIVE_TYPE_LABEL: Record<NonNullable<InitialFilter>, string> = {
+  residential: "Residential Projects",
+  commercial: "Commercial Projects",
+  renovation: "Renovation Projects",
+}
+
 interface GalleryContentProps {
   allPhotos: Photo[]
   projects: Project[]
@@ -49,24 +55,25 @@ const ALL_CATEGORIES: Category[] = [
 ]
 
 export function GalleryContent({ allPhotos, projects, initialFilter = null }: GalleryContentProps) {
-  const [viewMode, setViewMode] = useState<ViewMode>("projects")
+  const [viewMode, setViewMode] = useState<ViewMode>(initialFilter ? "all" : "projects")
+  const [activeTypeFilter, setActiveTypeFilter] = useState<InitialFilter>(initialFilter)
   const [categoryFilter, setCategoryFilter] = useState<FilterCategory>("all")
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxPhotos, setLightboxPhotos] = useState<Photo[]>([])
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
 
+  const basePhotos =
+    activeTypeFilter === null
+      ? allPhotos
+      : allPhotos.filter((p) => p.project_type_code === PROJECT_TYPE_CODE[activeTypeFilter])
+
   const filteredPhotos =
     categoryFilter === "all"
-      ? allPhotos
-      : allPhotos.filter((p) => p.category === categoryFilter)
+      ? basePhotos
+      : basePhotos.filter((p) => p.category === categoryFilter)
 
-  const filteredProjects =
-    initialFilter === null
-      ? projects
-      : projects.filter(
-          (project) => project.photos[0]?.project_type_code === PROJECT_TYPE_CODE[initialFilter]
-        )
+  const filteredProjects = projects
 
   const openLightbox = (photos: Photo[], index: number) => {
     setLightboxPhotos(photos)
@@ -121,7 +128,7 @@ export function GalleryContent({ allPhotos, projects, initialFilter = null }: Ga
         <div className="container mx-auto px-6">
           <div className="flex justify-center gap-2">
             <button
-              onClick={() => setViewMode("projects")}
+              onClick={() => { setViewMode("projects"); setActiveTypeFilter(null); }}
               className={`px-6 py-3 rounded-full font-medium transition-colors ${
                 viewMode === "projects"
                   ? "bg-[#ae7400] text-white"
@@ -143,6 +150,26 @@ export function GalleryContent({ allPhotos, projects, initialFilter = null }: Ga
           </div>
         </div>
       </section>
+
+      {/* Active type filter breadcrumb */}
+      {activeTypeFilter !== null && (
+        <div className="bg-[#f7f4f2] pt-4 pb-0">
+          <div className="container mx-auto px-6 flex justify-center">
+            <p className="text-sm text-[#1a2744]/70">
+              Showing:{" "}
+              <span className="font-medium text-[#1a2744]">
+                {ACTIVE_TYPE_LABEL[activeTypeFilter]}
+              </span>
+              <button
+                onClick={() => { setActiveTypeFilter(null); setViewMode("all"); }}
+                className="ml-3 px-4 py-1 rounded-full text-sm font-medium border border-[#ae7400] bg-white text-[#1a2744] hover:bg-gray-50 transition-colors"
+              >
+                Clear Filter
+              </button>
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Category Filter (All Photos view only) */}
       {viewMode === "all" && (
@@ -230,7 +257,7 @@ export function GalleryContent({ allPhotos, projects, initialFilter = null }: Ga
                     <Card
                       key={project.project_id}
                       className="overflow-hidden group cursor-pointer bg-white"
-                      onClick={() => setSelectedProject(project)}
+                      onClick={() => { setSelectedProject(project); setActiveTypeFilter(null); }}
                     >
                       <div className="relative aspect-[4/3] overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
