@@ -25,8 +25,20 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function GalleryPage() {
-  const { allPhotos, projects } = await getGalleryData()
+type FilterParam = "residential" | "commercial" | "renovation"
 
-  return <GalleryContent allPhotos={allPhotos} projects={projects} />
+const VALID_FILTERS: FilterParam[] = ["residential", "commercial", "renovation"]
+
+export default async function GalleryPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ filter?: string }>
+}) {
+  const { allPhotos, projects } = await getGalleryData()
+  const { filter } = await searchParams
+  const initialFilter = VALID_FILTERS.includes(filter as FilterParam)
+    ? (filter as FilterParam)
+    : null
+
+  return <GalleryContent allPhotos={allPhotos} projects={projects} initialFilter={initialFilter} />
 }

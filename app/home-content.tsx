@@ -14,6 +14,7 @@ interface HomeContentProps {
 
 interface FeatureProject {
   key: string
+  filter: string
   title: string
   description: string
   image: string
@@ -27,6 +28,7 @@ function buildFeatureProjects(featured: Featured): FeatureProject[] {
   if (featured.residential) {
     projects.push({
       key: "residential",
+      filter: "residential",
       title: "Residential",
       description: "Custom luxury homes and estates",
       image: featured.residential.drive_url,
@@ -38,6 +40,7 @@ function buildFeatureProjects(featured: Featured): FeatureProject[] {
   if (featured.commercial) {
     projects.push({
       key: "commercial",
+      filter: "commercial",
       title: "Commercial",
       description: "Office buildings and retail spaces",
       image: featured.commercial.drive_url,
@@ -49,6 +52,7 @@ function buildFeatureProjects(featured: Featured): FeatureProject[] {
   if (featured.renovation) {
     projects.push({
       key: "renovation",
+      filter: "renovation",
       title: "Renovations",
       description: "Transforming existing spaces",
       image: featured.renovation.drive_url,
@@ -155,7 +159,7 @@ export function HomeContent({ featured }: HomeContentProps) {
                   : "md:grid-cols-3"
             }`}>
               {featureProjects.map((project) => (
-                <Link key={project.key} href="/gallery">
+                <Link key={project.key} href={`/gallery?filter=${project.filter}`}>
                   <Card className="overflow-hidden group cursor-pointer">
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <div

@@ -23,6 +23,7 @@ export interface Photo {
   date_added: string;
   sequence: number;
   featured: FeaturedType | null;
+  project_type_code: string;
 }
 
 export interface Project {
@@ -111,7 +112,7 @@ export async function getGalleryData(): Promise<GalleryData> {
   }
 
   try {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/ReardonGallery!A:K?key=${apiKey}`;
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/ReardonGallery!A:L?key=${apiKey}`;
 
     const response = await fetch(url, {
       headers: { 'Referer': 'https://reardonbuilders.com' },
@@ -133,7 +134,7 @@ export async function getGalleryData(): Promise<GalleryData> {
     // Parse rows (skip header)
     // Columns: 0=filename, 1=drive_url, 2=category, 3=project_id,
     // 4=project_name, 5=status, 6=alt_text, 7=date_added, 8=sequence, 9=featured,
-    // 10=project_name_common
+    // 10=project_name_common, 11=project_type_code
     const photos: Photo[] = [];
 
     for (let i = 1; i < rows.length; i++) {
@@ -154,6 +155,7 @@ export async function getGalleryData(): Promise<GalleryData> {
         date_added: row[7] || '',
         sequence: parseInt(row[8] || '0', 10),
         featured: parseFeatured(row[9]),
+        project_type_code: row[11] || '',
       });
     }
 
