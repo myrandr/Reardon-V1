@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { getGalleryData } from "@/lib/gallery"
 import { GalleryContent } from "./gallery-content"
 
 export const metadata: Metadata = {
@@ -24,6 +25,20 @@ export const metadata: Metadata = {
   },
 }
 
-export default function GalleryPage() {
-  return <GalleryContent />
+type FilterParam = "residential" | "commercial" | "renovation"
+
+const VALID_FILTERS: FilterParam[] = ["residential", "commercial", "renovation"]
+
+export default async function GalleryPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ filter?: string }>
+}) {
+  const { allPhotos, projects } = await getGalleryData()
+  const { filter } = await searchParams
+  const initialFilter = VALID_FILTERS.includes(filter as FilterParam)
+    ? (filter as FilterParam)
+    : null
+
+  return <GalleryContent allPhotos={allPhotos} projects={projects} initialFilter={initialFilter} />
 }

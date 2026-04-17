@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: photo gallery system - gallery page, homepage featured section, lib/gallery.ts\n\n- Add lib/gallery.ts with getGalleryData\\(\\) fetching from Google Sheets\n- Update gallery page with Projects view and All Photos view with category filters\n- Add featured photos section to homepage \\(residential, commercial, renovation\\)\n- Photos pulled from ReardonGallery Google Sheet at build time\n- Graceful handling when featured photos are null\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)"
+    ]
+  }
+}

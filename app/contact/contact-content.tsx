@@ -595,14 +595,16 @@ export function ContactContent() {
           </div>
 
           <div className="max-w-3xl mx-auto text-center">
-            <Card className="p-8 bg-card">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6">
-                <MapPin className="h-8 w-8 text-accent" />
+            <Card className="overflow-hidden bg-card" style={{ backgroundImage: 'url(/Greater_Concord_Area_Map.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+              <div className="bg-white/60 p-8">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6">
+                  <MapPin className="h-8 w-8 text-accent" />
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-primary mb-4">Merrimack County, NH</h3>
+                <p className="text-muted-foreground text-lg">
+                  Serving Concord and surrounding communities throughout Merrimack County and beyond.
+                </p>
               </div>
-              <h3 className="font-serif text-2xl font-bold text-primary mb-4">Merrimack County, NH</h3>
-              <p className="text-muted-foreground text-lg">
-                Serving Concord and surrounding communities throughout Merrimack County and beyond.
-              </p>
             </Card>
           </div>
 

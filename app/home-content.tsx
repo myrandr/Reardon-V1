@@ -6,35 +6,67 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowRight, Users, Building2 } from "lucide-react"
 import Link from "next/link"
+import type { Featured, Photo } from "@/lib/gallery"
 
-const featureProjects = [
-  {
-    id: 1,
-    title: "Residential",
-    description: "Custom luxury homes and estates",
-    image: "/feature-residential.webp",
-    alt: "Residential construction",
-    overlayColor: "from-primary/80",
-  },
-  {
-    id: 2,
-    title: "Commercial",
-    description: "Office buildings and retail spaces",
-    image: "/feature-commercial.webp",
-    alt: "Commercial construction",
-    overlayColor: "from-accent/80",
-  },
-  {
-    id: 3,
-    title: "Renovations",
-    description: "Transforming existing spaces",
-    image: "/feature-renovations.webp",
-    alt: "Renovation projects",
-    overlayColor: "from-primary/80",
-  },
-]
+interface HomeContentProps {
+  featured: Featured
+}
 
-export function HomeContent() {
+interface FeatureProject {
+  key: string
+  filter: string
+  title: string
+  description: string
+  image: string
+  alt: string
+  overlayColor: string
+}
+
+function buildFeatureProjects(featured: Featured): FeatureProject[] {
+  const projects: FeatureProject[] = []
+
+  if (featured.residential) {
+    projects.push({
+      key: "residential",
+      filter: "residential",
+      title: "Residential",
+      description: "Custom luxury homes and estates",
+      image: featured.residential.drive_url,
+      alt: featured.residential.alt_text || "Residential construction",
+      overlayColor: "from-primary/80",
+    })
+  }
+
+  if (featured.commercial) {
+    projects.push({
+      key: "commercial",
+      filter: "commercial",
+      title: "Commercial",
+      description: "Office buildings and retail spaces",
+      image: featured.commercial.drive_url,
+      alt: featured.commercial.alt_text || "Commercial construction",
+      overlayColor: "from-accent/80",
+    })
+  }
+
+  if (featured.renovation) {
+    projects.push({
+      key: "renovation",
+      filter: "renovation",
+      title: "Renovations",
+      description: "Transforming existing spaces",
+      image: featured.renovation.drive_url,
+      alt: featured.renovation.alt_text || "Renovation projects",
+      overlayColor: "from-primary/80",
+    })
+  }
+
+  return projects
+}
+
+export function HomeContent({ featured }: HomeContentProps) {
+  const featureProjects = buildFeatureProjects(featured)
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -104,7 +136,7 @@ export function HomeContent() {
       </section>
 
       {/* About Section */}
-      <section className="py-12 md:py-24 bg-background">
+      <section className="pt-8 pb-12 md:pt-16 md:pb-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-6 text-balance">
@@ -118,26 +150,36 @@ export function HomeContent() {
           </div>
 
           {/* Feature Photos Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featureProjects.map((project) => (
-              <Card key={project.id} className="overflow-hidden group cursor-pointer">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t ${project.overlayColor} to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                  />
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.alt}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="font-serif text-2xl font-bold mb-2">{project.title}</h3>
-                    <p className="text-sm text-white/90">{project.description}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
+          {featureProjects.length > 0 && (
+            <div className={`grid grid-cols-1 gap-6 ${
+              featureProjects.length === 1
+                ? "md:grid-cols-1 max-w-md mx-auto"
+                : featureProjects.length === 2
+                  ? "md:grid-cols-2 max-w-3xl mx-auto"
+                  : "md:grid-cols-3"
+            }`}>
+              {featureProjects.map((project) => (
+                <Link key={project.key} href={`/gallery?filter=${project.filter}`}>
+                  <Card className="overflow-hidden group cursor-pointer">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-t ${project.overlayColor} to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                      />
+                      <img
+                        src={project.image}
+                        alt={project.alt}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 z-20 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 className="font-serif text-2xl font-bold mb-2">{project.title}</h3>
+                        <p className="text-sm text-white/90">{project.description}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

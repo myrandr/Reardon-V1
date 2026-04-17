@@ -50,7 +50,7 @@ async function getApprovedTestimonials(): Promise<Testimonial[]> {
       headers: {
         'Referer': 'https://reardonbuilders.com',
       },
-      next: { revalidate: 0 }, // No caching for now
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {

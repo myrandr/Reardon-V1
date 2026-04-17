@@ -1,0 +1,9 @@
+All images are populated from Google Drive - Google Worksheet.
+
+Images are added to google drive in Readon Builders Photo
+They are processed through Claude Code for ID
+Images are then uploaded top Google Drive Folder
+The folders are tied to an N8N process that parses information and adds them to a google sheet, including proper link to images
+The Google Sheet is read by the json on webpage and populates those images to the website.
+
+Photos/Images in this folder are not used for the website, images that are not website structure based (i.e. Header images).
