@@ -86,13 +86,11 @@ export function GalleryContent({ allPhotos, projects, initialFilter = null }: Ga
   }
 
   const nextImage = () => {
-    setCurrentPhotoIndex((prev) => (prev + 1) % lightboxPhotos.length)
+    setCurrentPhotoIndex((prev) => Math.min(prev + 1, lightboxPhotos.length - 1))
   }
 
   const prevImage = () => {
-    setCurrentPhotoIndex(
-      (prev) => (prev - 1 + lightboxPhotos.length) % lightboxPhotos.length
-    )
+    setCurrentPhotoIndex((prev) => Math.max(prev - 1, 0))
   }
 
   // Get categories that actually have photos
@@ -373,9 +371,10 @@ export function GalleryContent({ allPhotos, projects, initialFilter = null }: Ga
               <button
                 onClick={(e) => {
                   e.stopPropagation()
-                  prevImage()
+                  if (currentPhotoIndex > 0) prevImage()
                 }}
-                className="absolute left-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-50"
+                disabled={currentPhotoIndex === 0}
+                className={`absolute left-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center transition-colors z-50 ${currentPhotoIndex === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/20 cursor-pointer"}`}
                 aria-label="Previous image"
               >
                 <svg
@@ -396,9 +395,10 @@ export function GalleryContent({ allPhotos, projects, initialFilter = null }: Ga
               <button
                 onClick={(e) => {
                   e.stopPropagation()
-                  nextImage()
+                  if (currentPhotoIndex < lightboxPhotos.length - 1) nextImage()
                 }}
-                className="absolute right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-50"
+                disabled={currentPhotoIndex === lightboxPhotos.length - 1}
+                className={`absolute right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center transition-colors z-50 ${currentPhotoIndex === lightboxPhotos.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/20 cursor-pointer"}`}
                 aria-label="Next image"
               >
                 <svg
